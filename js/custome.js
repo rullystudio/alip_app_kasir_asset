@@ -41,3 +41,34 @@ function convertToRupiah(objek) {
     });
   });
 })(jQuery);
+
+$(document).ready(function() {
+  
+     $(document).on('click','#show-image_karyawan',function(e){
+        e.preventDefault();
+        url = $(this).attr('data-url');
+        id = "<img src='"+url+" >";
+        $.post(url,
+          {
+            id:$(this).attr('data-id'),
+          },
+          function(html){
+            $('#modal-foto').modal('show');
+            $("#data-foto").html('<img src="'+url+'" style="width:100%;"/>');
+          }) ;
+      });
+
+     $(document).on('click','#show-image_user',function(e){
+        e.preventDefault();
+        url = $(this).attr('data-url');
+        id = "<img src='"+url+" >";
+        $.post(url,
+          {
+            id:$(this).attr('data-id'),
+          },
+          function(html){
+            $('#modal-foto_user').modal('show');
+            $("#data-foto").html('<img src="'+url+'" style="width:100%;"/>');
+          }) ;
+      });
+});
